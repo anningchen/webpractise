@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+	<meta name="keywords" content="">
+    <title>Examples</title>
+
+  </head>
+  <body>
+
+  <button onclick="message()" value="View message">dianwodianwo</button>
+    <script>
+    var txt="";
+    function message(){
+    	try{
+    		addalert("Welcome guest");
+    	}
+    	catch(err){
+    		txt="There was an error on this page.\n\n";
+    		txt+="Error describtion:"+err.message+"\n\n";
+    		txt+="Click OK to continue .\n\n";
+    		alert(txt);
+    	}
+    }
+    </script>
+  </body>
+</html>

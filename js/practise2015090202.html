@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Example</title>
+</head>
+<body>
+<script type="text/javascript">
+var cars=new Array();
+cars[0]="Audi";
+cars[1]="BMW";
+cars[2]="Volvo";
+document.write(cars+"<br>");
+
+var csa=new Array("Audi","BMW","Volvo");
+document.write(csa+"<br>");
+
+var cs=["Audi","BMW","Vovle"];
+document.write(cs+"<br>");
+
+var person={firstname:"Bill",lastname:"Gates",id:5566};
+document.write(person+"<br>");
+document.write(person.lastname+"<br>");
+document.write(person["lastname"]);
+function e(){
+for(var o in person){
+document.write(o+":"+person[o]+"<br>");
+// document.getElementById("x").innerHTML(o+person[o]+"<br>");
+}
+}
+</script>
+<button onclick="e()">dianwo</button>
+</body>
+</html>

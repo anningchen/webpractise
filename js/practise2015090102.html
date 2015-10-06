@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+	<meta name="keywords" content="">
+    <title>Examples</title>
+  </head>
+  <body>
+
+	<input type="text" id="x">
+	<button onclick="e()">dianwo</button>
+	<p id="demo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus similique dignissimos eligendi iusto voluptas nostrum minus consectetur veritatis corrupti nam eum esse, hic repellendus? Sint qui deserunt, ad nemo nam.</p>
+	<button onclick="x()"></button>
+	<script>
+	function e(){
+		var e=document.getElementById("x").value;
+		if (e==""||isNaN(e)) {
+			alert("Flase");
+		}else{
+			alert("True");
+		}
+	}
+	function x(){
+		document.getElementById("demo").innerHTML="xxxx";
+	}
+	</script>
+  </body>
+</html>

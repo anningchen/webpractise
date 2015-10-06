@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+	<meta name="keywords" content="">
+    <title>Examples</title>
+  </head>
+  <body>
+
+  <script type="text/javascript">
+	document.write("<h1>this is a h1</h1>");
+	document.write("<p>this is a p</p>");
+  </script>
+	<button onclick="alert('nihao')">dianwodianwo</button>
+
+	<h1 id="demo" > this is a exe</h1>
+	<script>
+	function myFunction(){
+	x=document.getElementById("demo");
+	x.innerHTML="true";}
+	</script>
+	<button onclick="myFunction()">dianwo</button>;
+
+	<script>
+	function e(){
+		ee=document.getElementById("img");
+		if(ee.src.match(1)){
+			ee.src="F:/Mypictures/LOFTER/2.png";
+			//注意/和\的区别
+		}else{
+			ee.src="F:/Mypictures/LOFTER/1.jpg";
+		}
+	}
+	</script>
+	<img src="F:\Mypictures\LOFTER\1.jpg" id="img" onclick="e()">
+
+	<script>
+	function eee(){
+		a=document.getElementById("x");
+		x.style.color="black";
+	}
+	</script>
+	<p style="color:red;" id="x">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, alias voluptate voluptatum veniam, consectetur iste sapiente provident ad quidem quod rerum ullam sed atque aperiam quibusdam odit earum eum harum.</p>
+	<button onclick="eee()">dianwo</button>
+  </body>
+</html>
