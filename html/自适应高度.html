@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+<script type="text/javascript" src="http://www.webdm.cn/themes/script/jquery.js"></script>
+<script type="text/javascript"> 
+$(function(){
+	$(".left").height($(window).height()-100);//100是顶部高度
+	$(".right").height($(window).height()-100);//100是顶部高度
+	$(window).resize(function() {
+		$(".left").height($(window).height()-100);//100是顶部高度
+		$(".right").height($(window).height()-100);//100是顶部高度
+	});//当浏览器窗口变化时对各窗口大小进行重置         
+});   
+</script>
+<style type="text/css">
+* {margin:0; padding:0;}
+.top { background:#999; color:#FFF; height:100px;}
+.left { float:left; width:100px; background:#69F; color:#fff;} 
+.right { margin-left:100px; background:#06F; color:#fff;} 
+</style>
+<body>
+<div class="top">顶部</div>
+<div class="left">左边</div>
+<div class="right">右边</div>
+</body>
+</html>
