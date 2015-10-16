@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+	<meta name="keywords" content="">
+  </head>
+  <body>  
+  <p id="demo"></p>
+  <!-- 顺序真的会影响是否显示 如果把id为demo的p放在javascript的最后那么就无法显示出来估计是因为执行先后的问题，javascript放在body的前面时会先于html的执行，这是还没有id为demo的p，所以无法显示-->
+   <script>
+   var person=new Object();
+   person.firstname="Bill";
+   person.lastname="Gates";
+   person.age=56;
+   person.eyecolor="blue";
+   document.write(person.firstname+" is "+person.age+" years old.");
+   
+   var message="Hello world";
+   document.write(message.toUpperCase());
+   document.write(message.length);
+
+   function my(name,v){
+   	alert("Welcome "+ name +",the "+ v );
+   }
+
+   function x(){
+   	var x=5;
+   	return x;
+   }
+   var f=x();
+   document.write(f);
+
+   function a(a,b){
+   	return a*b;
+   }
+   document.getElementById("demo").innerHTML=a(4,3);
+   </script>
+   <button onclick="my('Bill','ssss')">dianwo</button>
+   <button onclick="my('ssssssss','xxxxx')">dianwo</button>
+   <button onclick="my('gggg','ddd')">dianwo</button>
+  <!-- <button onclick="myf('Bill Gates','CEO')">点击这里</button> -->
+
+  
+  </body>
+</html>

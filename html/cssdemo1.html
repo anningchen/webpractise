@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<!--有问题-->
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	h1{
+		width:600px;
+		height:50px;
+		font-size:16px;
+		background:#ccc;
+	}
+	.blue{background:blue:}/*这是为main单独定义的一个类，就是一个样式*/
+  </style>
+  <script type="text/javascript">
+  //alert（“这是js脚本”）
+  //当网页加载完成后，执行什么操作
+	windows.onload=function(){
+		//先将ID命名为main的html元素获取出来
+		//这里的var main，这个main就代表网页中的ID叫做main的对象
+		var main=document.getElementById('main');
+		//当鼠标进过main时，我们给main加上blue这个样式
+		main.onmouseover=function(){
+			this.className="blue";
+		};
+		//当鼠标移开main时，再将main的blue去掉
+		main.onmouseout=function(){
+			this.className="";
+		};
+	};
+  </script>
+ </head>
+ <body>
+	<h1 id="main">政治局:楼市调控政策不会动摇</h1>
+
+ </body>
+</html>

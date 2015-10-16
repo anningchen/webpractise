@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>后台管理系统</title>
+<!-- mate标签 -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!-- 引用 Bootstrap 文件  -->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap1.min.css">
+<!-- 自定义模板样式 -->
+<link rel="stylesheet" type="text/css" href="../css/myscc.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+<script src="../jquery/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- 导航条 -->
+<div class="navbar navbar-default" role="navigation" style="border-radius:0;">
+	<div class="navbar-header">
+		<a class="navbar-brand">易校网管理系统</a>
+	</div>
+</div>
+
+<!-- 内容主题 -->
+<div class="container-fluid">
+<div class="row">
+<!-- 侧边下拉菜单 -->
+	<div class="col-md-2">
+		<ul id="main-nav" class="nav nav-tabs nav-stacked">
+            <li>
+	            <a href="#systemSetting" class="nav-header collapsed" data-toggle="collapse"><span class="glyphicon glyphicon-cog"></span>  商户管理
+	            <span class="pull-right glyphicon glyphicon-chevron-down"></span> </a>
+            	<ul id="systemSetting" class="nav nav-list collapse secondmenu" style="height: 0px;">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span>  待审核商家</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-th-list"></span>  已通过审核商家</a></li>
+            	</ul>
+            </li>
+			<li>
+				<a href="#plan" class="nav-header collapsed" data-toggle="collapse"><span class="glyphicon glyphicon-credit-card"></span>  用户管理
+				<span class="pull-right glyphicon glyphicon-chevron-down"></span> </a>
+				<ul id="plan" class="nav nav-list collapse secondmenu" style="height:0px;">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>  待审核用户<span class="label label-warning pull-right">5</span></a></li>
+				<li><a href="#"><span class="glyphicon glyphicon-th-list"></span>  已通过审核商家<span class="label label-warning pull-right">5</span></a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#grid" class="nav-header collapsed" data-toggle="collapse"><span class="glyphicon glyphicon-globe"></span>  订单管理
+				<span class="pull-right glyphicon glyphicon-chevron-down"></span> </a>
+				<ul id="grid" class="nav nav-list collapse secondmenu" style="height:0px;">
+				<li><a href="#"><span class="glyphicon glyphicon-user"></span>  已完成订单</a></li>
+				
+				</ul>
+			</li>
+			<li>
+				<a href="#1" class="nav-header collapsed" data-toggle="collapse"><span class="glyphicon glyphicon-fire"></span> 关于系统
+			</li>
+		</ul>
+	</div>
+<!-- 正文 -->
+	<div class="col-md-10">
+		<div class="container">
+			<!-- <div class="col-md-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos, molestiae? Quia, eos deserunt assumenda rem sed maxime perspiciatis. Vel laudantium minima voluptates, eveniet ut, architecto autem temporibus rerum odit fugit.</div> -->
+			<div class="col-md-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam incidunt, itaque quibusdam, tempora architecto vero. Aperiam obcaecati vitae reiciendis quae saepe dolore esse, praesentium repellat iste! Nesciunt odit amet maiores.</div>
+			<!-- <div class="col-md-4"></div> -->
+		</div>
+	</div>
+</div></div>
+</body>
+</html>
