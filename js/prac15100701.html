@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用for和while正序和倒序分别遍历数组</title>
+	<script>
+		
+		'use strict';
+		var arr = ['Bart', 'Lisa', 'Adam'];
+
+		//for正序
+		for(var i in arr){
+		  alert('Hello,'+arr[i]+'!');
+		}
+
+		//for倒序
+		for(var i=arr.length-1;i>=0;i--){
+		   alert('Hello,'+arr[i]+'!');
+		}
+
+		//while正序
+		var x =0;
+		while(x<arr.length){
+		  alert('Hello,'+arr[x]+'!');
+		  x++;
+		}
+
+		//while倒序
+		var x =arr.length-1;
+		while(x>=0){
+		  alert('Hello,'+arr[x]+'!');
+		  x--;
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
+

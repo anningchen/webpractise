@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js图片库第一版</title>
+	<style>
+/**
+ * 第一版，在同一页面展示不同的图片
+ */
+		#body{
+			width:800px;
+			margin:0 auto;
+			text-align: center;
+		}
+		ul{
+			list-style: none;
+			width:500px;
+			margin:0 auto;
+			overflow: hidden;
+		}
+		li{
+			float: left;
+			padding:10px 20px;
+			margin: 20px;
+		}
+		ul li a{
+			text-decoration: none;
+			font-size: 20px;
+		}
+		img{
+			width:800px;
+			height: 600px;
+		}
+	</style>
+</head>
+<body>
+<div id="body">
+
+	<h2>js图片库</h2>
+	<ul>
+		<li><a href="./img/1.jpg" title="1" onclick="showpic(this); event.preventDefault();">1</a></li>
+		<li><a href="./img/3.jpg" title="2" onclick="showpic(this); event.preventDefault();">2</a></li>
+		<li><a href="./img/4.jpg" title="3" onclick="showpic(this); event.preventDefault();">3</a></li>
+		<li><a href="./img/5.jpg" title="4" onclick="showpic(this); event.preventDefault();">4</a></li>
+	</ul>
+	<img src="./img/2.png" id="img">
+	<p id="text">5</p>
+</div>
+<script>
+	function showpic(whichone){
+		var changeimg = whichone.getAttribute("href");
+		var img = document.getElementById("img");
+		img.setAttribute("src",changeimg);
+		var changetext = whichone.getAttribute("title");
+		var text = document.getElementById("text");
+		text.firstChild.nodeValue=changetext;
+	}
+</script>
+</body>
+</html>

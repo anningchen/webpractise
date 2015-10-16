@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<a href="https://www.baidu.com" class="popup">1</a>
+	<a href="https://www.baidu.com">2</a>
+	<a href="https://www.baidu.com">3</a>
+	<a href="https://www.baidu.com">4</a>
+
+	<script>
+		//DOM一级事件函数
+		// window.onload=(function(){
+		// 	var a = document.getElementsByClassName("popup")[0];
+		// 	a.onclick = function(){
+		// 	window.open(this.href,"popup","width=400px,height=200px");
+		// 	return false;
+		// }});
+		
+		window.onload = pop;
+		function pop(){
+			if(!document.getElementsByTagName) return false;
+			var links = document.getElementsByTagName("a");
+			for (var i=links.length-1;i>=0;i--) {
+				if (links[i].getAttribute("class")=="popup") {
+					links[i].onclick=function(){
+						popUp(this.getAttribute("href"));
+						console.log("hello");
+						return false;
+					}
+				}
+			}
+		}
+
+		function popUp(winURL){
+			window.open(winURL,"popup","width=300px,height=200px");
+		}
+	</script>
+</body>
+</html>

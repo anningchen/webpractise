@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>鼠标拖动小方块</title>
+		<style type="text/css">
+			.lineDiv{position:absolute;height:5px;font-size:0;line-height:0;background:#999;width:500px;top:100px;left:50%;margin-left:-250px}
+			.lineDiv .minDiv{position:absolute;top:-5px;left:0;width:15px;height:15px;background:#000;cursor:pointer}
+		</style>
+	</head>
+	<body>
+		<div style="text-align: center;"><h3>用鼠标拖动小方块</h3></div>
+		<div id="lineDiv" class="lineDiv">
+			<div id="minDiv" class="minDiv"></div>
+		</div>
+		<script>
+		    window.onload = function(){
+		    	var mindiv = document.getElementById("minDiv");
+		    	var linediv = document.getElementById("lineDiv");
+		    	var isdown = false;
+
+		    	//鼠标按下事件
+		    	mindiv.onmousedown = function(e){
+		    		e.stopPropagation();
+		    		isdown = true;
+		    	};
+		    	//鼠标移动事件
+		    	mindiv.onmousemove = function(e){
+		    		e.stopPropagation();
+		    		if(isdown){
+		    			var x = e.clientX;
+		    			if(x<getlength(linediv)+5){
+		    				mindiv.style.left = 0;
+		    			}
+		    			if(x>getlength(linediv)+linediv.offsetWidth){
+		    				mindiv.style.left = linediv.offsetWidth-5;
+		    			}
+		    			mindiv.style.left = x - getlength(linediv) - 5+"px";
+		    		}
+		    	};
+		    	//鼠标松开事件
+		    	mindiv.onmouseup = function(){
+		    		isdown = false;
+		    	};
+		    	//获取容器距离屏幕左边的距离
+		    	function getlength(node){
+		    		var left = node.offsetLeft;
+		    		var parent = node.offsetParent;
+		    		while(parent){
+		    			left +=parent.offsetLeft;
+		    			parent = parent.offsetParent;
+		    		}
+		    		return left;
+		    	}
+		    }
+		</script>	
+	</body>
+</html>

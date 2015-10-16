@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js页面拖拽效果实现</title>
+	<style>
+		body{
+			margin: 0;
+			padding:50px;
+			font-size: 14px;
+			color: #333;
+		}
+		#panel{
+			width: 400px;
+			height: 240px;
+			border: 1px solid #ccc;
+			position: relative;
+		}
+		.title{
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			background: #eee;
+			border:1px solid #fff;
+		}
+		.resizable-r{
+			position: absolute;
+			top:0;
+			right: 0;
+			width: 10px;
+			height: 100%;
+			/*background: green;*/
+			cursor: e-resize;
+		}
+		.resizable-b{
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			width: 100%;
+			height: 10px;
+			/*background: blue;*/
+			cursor: s-resize;
+		}
+		.resizable-rb{
+			position: absolute;
+			bottom:0;
+			right: 0;
+			width: 20px;
+			height: 20px;
+			/*background: red;*/
+			cursor: nw-resize;
+		}
+	</style>
+</head>
+<body>
+	<div id="panel">
+		<div class="title">Resizable panel</div>
+		<div class="resizable-r"></div>
+		<div class="resizable-b"></div>
+		<div class="resizable-rb"></div>
+	</div>
+
+	<script>
+	//当页面加载完毕的时候加载
+	window.onload = function(){
+		//获取各节点
+		var panel = document.getElementById("panel");
+		var r = document.getElementsByClassName("resizable-r")[0];
+		var b = document.getElementsByClassName("resizable-b")[0];
+		var rb = document.getElementsByClassName("resizable-rb")[0];
+		var isdown = false;//用于判断是否按下鼠标
+		var content;//用于判断是哪个方向被按下
+		//鼠标按下事件，分别针对右边、底边、右下角
+		r.onmousedown = function(e){
+			isdown = true;
+			content = r;
+		};
+		b.onmousedown = function(e){
+			isdown = true;
+			content =b;
+		};
+		rb.onmousedown = function(e){
+			isdown = true;
+			content = rb;
+		};
+		//鼠标移动事件
+		window.onmousemove = function(e){
+			if(isdown){
+				switch(content){
+					case r:mover(e);break;
+					case b:moveb(e);break;
+					case rb:mover(e);moveb(e);break;//右下拖动是向右和向下一起
+				}
+			}
+		};
+		//鼠标松开事件
+		window.onmouseup = function(e){
+			isdown = false;
+		};
+		//定义鼠标向右拖动
+		function mover(e){
+			var x = e.clientX;//获取鼠标当前横坐标
+			if(x<panel.offsetLeft){
+				panel.style.width =0;
+			}else{
+			panel.style.width = x - panel.offsetLeft+"px";//设置panel的宽度
+			}
+		}
+		//定义鼠标向下拖动
+		function moveb(e){
+			var y = e.clientY;//获取鼠标当前纵坐标
+			if(y<panel.offsetTop){
+				panel.style.height =0;
+			}else{
+			panel.style.height = y - panel.offsetTop+"px";//设置panel的高度
+			}
+
+		}
+		}
+	</script>
+</body>
+</html>

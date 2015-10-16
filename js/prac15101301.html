@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background:#aaa;
+			margin:0;
+			padding:0;
+		}
+		#box{
+			position: relative;
+			width: 600px;
+			height: 400px;
+			top:100px;
+			left:50px;
+		}
+		img{
+			width: 600px;
+			height: auto;
+			position: absolute;
+		}
+		#img1{
+			opacity: 0.4;
+		}
+		#img2{
+			clip: rect(100px,300px,200px,100px);
+		}
+		#main{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			border: 1px solid #fff;
+			top:100px;
+			left:100px;
+			cursor: move;
+		}
+		#main div{
+			position: absolute;
+			width:8px;
+			height: 8px;
+			background:white;
+		}
+		.little-div-1{
+			left: -4px;
+			top: -4px;
+			cursor: nw-resize;
+		}
+		.little-div-2{
+			left: 50%;
+			margin-left: -4px;
+			top: -4px;
+			cursor: n-resize;
+		}
+		.little-div-3{
+			right: -4px;
+			top: -4px;
+			cursor: ne-resize;
+		}
+		.little-div-4{
+			right: -4px;
+			top: 50%;
+			margin-top: -4px;
+			cursor: e-resize;
+		}
+		.little-div-5{
+			right: -4px;
+			bottom: -4px;
+			cursor: se-resize;
+		}
+		.little-div-6{
+			left: 50%;
+			margin-left: -4px;
+			bottom: -4px;
+			cursor: s-resize;
+		}
+		.little-div-7{
+			left: -4px;
+			bottom: -4px;
+			cursor: sw-resize;
+		}
+		.little-div-8{
+			left: -4px;
+			top: 50%;
+			margin-top: -4px;
+			cursor: w-resize;
+		}
+		#imgpreview{
+			position: absolute;
+			left:700px;
+			top:100px;
+		}												
+	</style>
+	
+</head>
+<body>
+<div id="box">
+	<img src="img/2.png" alt="最底层" id="img1">
+	<img src="img/2.png" alt="第二层" id="img2">
+	<div id="main">
+	<!-- 按照顺时针顺序排列-->
+		<div class="little-div-1"></div>
+		<div class="little-div-2"></div>
+		<div class="little-div-3"></div>
+		<div class="little-div-4"></div>
+		<div class="little-div-5"></div>
+		<div class="little-div-6"></div>
+		<div class="little-div-7"></div>
+		<div class="little-div-8"></div>
+	</div>
+</div>
+<div id="imgpreview">
+	<img src="img/2.png" alt="预览" id="img3">
+</div>
+	<script src="js/jquery-1.8.1.min.js"></script>
+	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script>
+	document.onselectstart=new Function('event.returnValue=false;');
+	window.onload = function(){
+		var ldiv1 = document.getElementsByClassName("little-div-1")[0];
+		var ldiv2 = document.getElementsByClassName("little-div-2")[0];
+		var ldiv3 = document.getElementsByClassName("little-div-3")[0];
+		var ldiv4 = document.getElementsByClassName("little-div-4")[0];
+		var ldiv5 = document.getElementsByClassName("little-div-5")[0];
+		var ldiv6 = document.getElementsByClassName("little-div-6")[0];
+		var ldiv7 = document.getElementsByClassName("little-div-7")[0];
+		var ldiv8 = document.getElementsByClassName("little-div-8")[0];
+
+		var maind = document.getElementById("main");
+		var box = document.getElementById("box");
+		var isdown = false;
+		var content = "";
+		//鼠标按下事件
+		$( "#main" ).draggable({ containment:'parent',drag:setviewable});
+		ldiv1.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "left-up";
+		};
+		ldiv2.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "up";
+		};
+		ldiv3.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "right-up";
+		};
+		ldiv4.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "right";
+		};
+		ldiv5.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "right-down";
+		};
+		ldiv6.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "down";
+		};
+		ldiv7.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "left-down";
+		};
+		ldiv8.onmousedown = function(e){
+			e.stopPropagation();
+			isdown = true;
+			content = "left";
+		};
+		//鼠标松开事件
+		window.onmouseup = function(){
+			isdown = false;
+			content = "";
+		};
+		//鼠标移动事件
+		window.onmousemove = function(e){
+			e.stopPropagation();
+			if(isdown){
+			switch(content){
+				case "left-up":left(e);up(e);break;
+				case "up":up(e);break;
+				case "right-up":right(e);up(e);break;
+				case "right":right(e);break;
+				case "right-down":right(e);down(e);break;
+				case "down":down(e);break;
+				case "left-down":left(e);down(e);break;
+				case "left":left(e);break;
+			}
+			}
+			setviewable();
+		};
+
+	function left(e){
+		var x = e.clientX;//鼠标x坐标
+		if(x<getxy(box).left){
+			x=getxy(box).left;
+		}
+		var widthbefore = maind.offsetWidth-2;//选取框变换前宽度
+		var width = getxy(maind).left;
+		var addwidth = width-x;//鼠标移动后增加的宽度
+		maind.style.width = addwidth+widthbefore+"px";//选取框变换后的宽度
+		maind.style.left = maind.offsetLeft-addwidth+"px";//选取框距离父元素左边的距离
+	}
+	function right(e){
+		var x = e.clientX;//鼠标x坐标
+		if(x>getxy(box).left+box.offsetWidth){
+			x=getxy(box).left+box.offsetWidth;
+		}
+		var widthbefore = maind.offsetWidth-2;//选取框变换前宽度
+		var width = getxy(maind).left;
+		var addwidth = x-widthbefore-width;//鼠标移动后增加的宽度
+		maind.style.width = addwidth+widthbefore+"px";//选取框变换后的宽度
+	}
+	function up(e){
+		var y = e.clientY;//鼠标y坐标
+		if(y<getxy(box).top){
+			y=getxy(box).top;
+		}
+		var heightbefore = maind.offsetHeight-2;//选取框变换前高度
+		var height = getxy(maind).top;
+		var addheight = height-y;//鼠标移动后增加的高度
+		maind.style.height = (addheight+heightbefore)+"px";//选取框变换后的高度
+		maind.style.top = maind.offsetTop-addheight+"px";//选取框距离父元素顶部的距离
+	}
+	function down(e){
+		var y = e.clientY;//鼠标y坐标
+		if(y>getxy(box).top+box.offsetHeight){
+			y=getxy(box).top+box.offsetHeight;
+		}
+		var heightbefore = maind.offsetHeight-2;//选取框变换前高度
+		var height = getxy(maind).top;
+		var addheight = y-heightbefore-height;//鼠标移动后增加的高度
+		maind.style.height = addheight+heightbefore+"px";//选取框变换后的高度
+	}
+
+	//获取节点与屏幕左边、顶部和屏幕的距离
+	function getxy(node){
+		var left = node.offsetLeft;//获取节点与父元素左边的距离
+		var top = node.offsetTop;//获取节点与父元素顶部的距离
+		var parent = node.offsetParent;//获取该节点的父元素
+		while(parent){
+			left +=parent.offsetLeft;
+			top +=parent.offsetTop;
+			parent = parent.offsetParent;
+		}//如果父元素不为空，则继续获得父元素的父元素，并将距离加载left上，直到父元素为空
+		return {
+			"left":left,
+			"top":top
+		}
+	}	
+
+	//设置图片可见区域
+	function setviewable(){
+		var left = maind.offsetLeft;
+		var top = maind.offsetTop;
+		var right = maind.offsetLeft+maind.offsetWidth;
+		var down = maind.offsetTop+maind.offsetHeight;
+		var img2 = document.getElementById("img2");
+		img2.style.clip= "rect("+top+"px,"+right+"px,"+down+"px,"+left+"px)";
+		preview()
+	}
+
+	function preview(){
+		var left = maind.offsetLeft;
+		var top = maind.offsetTop;
+		var right = maind.offsetLeft+maind.offsetWidth;
+		var down = maind.offsetTop+maind.offsetHeight;
+		var img3 = document.getElementById("img3");
+		img3.style.top = -top+"px";
+		img3.style.left = -left+"px";
+		img3.style.clip= "rect("+top+"px,"+right+"px,"+down+"px,"+left+"px)";
+	}
+}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <a href="javascript:popUp('https://www.baidu.com');">a</a> -->
+	<!-- <a href="#" onclick="popUp('https://www.baidu.com'); return false;">a</a> -->
+	<!-- 为实现平稳退化，href设置为可以被独立识别，保证在浏览器不支持javascript或者用户关闭了浏览器的javascript时依旧可以使用-->
+	<a href="https://www.baidu.com" onclick="popUp(this.href);return false">a</a>
+	<script>
+	function popUp(winURL){
+		window.open(winURL,"baidux","width:500px,height:400px");
+	}
+	</script>
+</body>
+</html>

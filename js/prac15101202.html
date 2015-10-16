@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js图片库第一版</title>
+	<style>
+/**
+ * 第二版，在同一页面展示不同的图片，优化js代码结构，使html和js分离，本来应该使用外部链接的形式使用js代码，但是这里为了简单，直接使用内嵌代码
+ */
+		#body{
+			width:800px;
+			margin:0 auto;
+			text-align: center;
+		}
+		ul{
+			list-style: none;
+			width:500px;
+			margin:0 auto;
+			overflow: hidden;
+		}
+		li{
+			float: left;
+			padding:10px 20px;
+			margin: 20px;
+		}
+		ul li a{
+			text-decoration: none;
+			font-size: 20px;
+		}
+		img{
+			width:800px;
+			height: 600px;
+		}
+	</style>
+</head>
+<body>
+<div id="body">
+
+	<h2>js图片库</h2>
+	<ul id="pic">
+		<li><a href="./img/1.jpg" title="1">1</a></li>
+		<li><a href="./img/3.jpg" title="2">2</a></li>
+		<li><a href="./img/4.jpg" title="3">3</a></li>
+		<li><a href="./img/5.jpg" title="4">4</a></li>
+	</ul>
+	<img src="./img/2.png" id="img">
+	<p id="text">5</p>
+</div>
+<script>
+	function pix(){
+		if (!document.getElementById("pic")||!document.getElementsByTagName||!document.getElementById) {} else{};
+	var pic = document.getElementById("pic");
+	var links = pic.getElementsByTagName("a");
+	for (var i = links.length - 1; i >= 0; i--) {
+		links[i].onclick = function(){
+			// showpic(this);
+			// return false;
+			return showpic(this)?false:true;//函数返回true说明执行成功，则在这里return false，去掉浏览器点击链接的默认行为，如果函数的值为false。则在这里return true，使用浏览器的默认行为
+		}
+	};}
+
+	function showpic(whichone){
+		if(!document.getElementById("img")) return false;
+		var changeimg = whichone.getAttribute("href");
+		var img = document.getElementById("img");
+		if(img.nodeName!="IMG") return false;
+		img.setAttribute("src",changeimg);
+		if(document.getElementById("text")){
+			var changetext = whichone.getAttribute("title")?whichone.getAttribute("title"):"";
+			var text = document.getElementById("text");
+			if (text.firstChild.nodeType==3) {
+			text.firstChild.nodeValue=changetext;
+			}
+		}
+	return true;
+	}
+	//添加页面加载完毕后执行函数队列的函数，window.onload智能同时执行一个函数，如果需要增添多个函数，需要使用以下函数
+	function addEventload(func){
+		var oldonload = window.onload;
+		if(typeof window.onload !="function"){
+			window.onload=func;
+		}else{
+			window.onload = function(){
+				oldonload();
+				func();
+			}
+		}
+	}
+	//调用该事件
+	addEventload(pix);
+</script>
+</body>
+</html>

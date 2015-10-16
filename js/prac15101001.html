@@ -1,0 +1,91 @@
+/**
+ * 主要实现的功能：利用js实现点击一个按钮（a）实现回到页面顶端，中间会有定时器实现的变速移动滚动条，并且在第一屏不显示该按钮
+ * 主要思路如下：
+ * 1、获得按钮节点
+ * 2、添加点击事件
+ * 3、获取滚动条距离页面顶端高度
+ * 4、改变页面顶端高度
+ * 5、为实现点击按钮后自动改变页面高度，添加定时器
+ * 6、清除定时器
+ */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js实现回到顶部效果</title>
+	<style>
+		.box{
+			width:1200px;
+			margin:0 auto;
+		}
+		#btn{
+			width:40px;
+			height:40px;
+			position: fixed;
+			right:20px;
+			bottom:30px;
+			background: url("img/backtop.jpg") no-repeat left top;
+			display: none;/*默认不显示，直到页面到达第二页面高度，即当前滚动条距离顶部高度大于页面可视宽度*/
+		}
+		#btn:hover{
+			background-position: 0 -40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img src="img/tb_bg.jpg" alt="淘宝">
+		<a href="javascript:;" id="btn"></a>
+	</div>
+	<script>
+		window.onload=function(){
+			//获取相应的回到顶部按钮
+			var btn = document.getElementById("btn");
+			//获取页面可视高度
+			var clientheight = document.documentElement.clientHeight;
+			//设置定时器参数
+			var timer = null;
+			var istop = true;
+
+			//人为中途阻止时，停止
+			window.onscroll = function(){
+				//获得滚动条距离顶部的宽度
+				var isscolltop = document.documentElement.scrollTop || document.body.scrollTop;
+				//判断滚动条距离顶部的宽度和当前页面可是宽度的大小
+				if(isscolltop>=clientheight){
+					btn.style.display="block";
+				}else{
+					btn.style.display="none";
+				}
+				if(!istop){
+					clearInterval(timer);
+				}
+				istop = false;
+			}
+
+			//按钮的点击
+			btn.onclick=function(){
+				//定时器
+				timer = setInterval(function(){
+					//获得滚动条距离顶部的宽度
+					var isscolltop = document.documentElement.scrollTop || document.body.scrollTop;
+					//设置速度
+					var isspeed = -isscolltop/5;
+					//设置滚动条距离顶部的宽度
+					document.documentElement.scrollTop=document.body.scrollTop=isscolltop+isspeed;
+					// console.log(isscolltop);
+					// 定时器导致的滚动不用执行onscroll，要放在改变isscolltop高度之后
+					istop = true;
+					// 如果距离顶部为0，则停止定时器
+					if(isscolltop==0){
+						clearInterval(timer);
+					}
+				},30);
+				
+			};
+		};
+
+	</script>
+</body>
+</html>
