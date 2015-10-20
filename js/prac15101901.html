@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js对象</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,sex){
+		this.name = name;
+		this.sex = sex;
+		this.say = function(){
+			document.body.innerHTML = this.name+'\n'+this.sex;
+		}
+	}
+
+	var zhangsan = new Person('xiaoli','female');
+	zhangsan.say();
+
+	zhangsan.tel = '029-81892332';
+	zhangsan.run = function(){
+		return 'hhhhh';
+	}
+
+	alert(zhangsan.name);
+	alert(zhangsan.sex);
+	alert(zhangsan.say());
+	alert(zhangsan.tel);
+	alert(zhangsan.run());
+
+</script>
+</html>
