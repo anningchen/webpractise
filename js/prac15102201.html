@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js控制div属性</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<style>
+		#main{
+		}
+		ul{
+			list-style:none;
+			width: 240px;
+			margin: 0 auto;
+			overflow: hidden;
+			padding: 0;
+		}
+		ul li{
+			float:left;
+			margin: 5px;
+			padding: 2px 5px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			background: #eee;
+		}
+		ul li a{
+			text-decoration: none;
+			margin:0;
+		    padding:0;
+		    border:0;
+		    font-size:12px;
+		    vertical-align:baseline;
+		    background:transparent;
+		    color: black;
+		    display: block;
+		}
+		ul li:hover{
+			background: #ccc;
+		}
+		.reset{
+			clear: both;
+			width: 100px;
+			height: 100px;
+			background: black;
+			margin: 10px auto;
+		}
+		.chwidth{
+			width:150px;
+		}
+		.chheight{
+			height:150px;
+		}
+		.chcolor{
+			background: red;
+		}
+		.chdis{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<!-- 利用js控制div属性 需要注意id的权值要高于class，所以不要把style放在id中，也要注意在每次点击按钮时，还要先便会原来的style -->
+	<div id="main">
+		<ul>
+			<li><a href="javascript:;" id="a1" >变宽</a></li>
+			<li><a href="javascript:;" id="a2" >变高</a></li>
+			<li><a href="javascript:;" id="a3" >变色</a></li>
+			<li><a href="javascript:;" id="a4" >隐藏</a></li>
+			<li><a href="javascript:;" id="a5" >重置</a></li>
+		</ul>
+		<div id="d" class="reset"></div>
+	</div>
+	<script>
+	window.onload=function(){
+		var a1=document.getElementById('a1');
+		var a2=document.getElementById('a2');
+		var a3=document.getElementById('a3');
+		var a4=document.getElementById('a4');
+		var a5=document.getElementById('a5');
+		var d =document.getElementById('d');
+
+		a1.onclick=function(){
+			// d.style.cssText='';
+			// d.style.width='150px';
+			d.class=d.className='reset chwidth';
+		};
+		a2.onclick=function(){
+			// d.style.cssText='';
+			// d.style.height='150px';
+			d.class=d.className='reset chheight';
+		};
+		a3.onclick=function(){
+			// d.style.cssText='';
+			// d.style.background='red';
+			d.class=d.className='reset chcolor';
+		};
+		a4.onclick=function(){
+			// d.style.cssText='';
+			// d.style.display='none';
+			d.class=d.className='reset chdis';
+		};
+		a5.onclick=function(){
+			// d.style.cssText='';
+			d.class=d.className='reset';
+		};
+	};
+	</script>
+</body>
+</html>
