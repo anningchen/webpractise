@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>记住密码提示框</title>
+	<style>
+		#main{
+			font-size:12px;
+			width:110px;
+			margin:0 auto;
+		}
+		#main *{
+			vertical-align:text-top;
+			margin-top:0;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<input type="checkbox">
+		两周内自动登陆
+	</div>
+
+	<script>
+	window.onload=function(){
+		var main=document.getElementById('main');
+		var divx=document.createElement('div');
+		var divt=document.createTextNode('为了您的信息安全，请不要在网吧或者公用电脑上使用该功能');
+		divx.appendChild(divt);
+		divx.style.backgroundColor='orange';
+		divx.style.border='1px solid #ccc';
+		divx.style.width='120px';
+		divx.style.fontSize='10px';
+		divx.style.paddingTop='5px';
+		divx.style.paddingLeft='5px';
+		divx.style.paddingBottom='5px';
+		divx.style.paddingRight='5px';
+		var body=document.body;
+		main.onmouseover=function(){
+			main.appendChild(divx);
+		};
+		main.onmouseout=function(){
+			main.removeChild(divx);
+		};
+	}
+	</script>
+</body>
+</html>

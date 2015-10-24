@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js 网页换肤</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<style>
+		body{
+			
+			margin:0;
+			padding:0;
+		}
+		div{
+			width:600px;
+			margin: 0 auto;
+		}
+		ul{
+			list-style: none;
+			overflow: hidden;
+			padding: 0;
+		}
+		ul li{
+			float: left;
+		}
+		ul li a{
+			text-decoration: none;
+			display: block;
+			float: left;
+			margin: 0;
+			padding: 0;
+		}
+		#btn{
+			width: 120px;
+			margin: 0;
+			padding: 0;
+		}
+		.btn{
+			width: 15px;
+			height: 15px;
+			margin: 8px;
+		}
+
+		.a1{
+			background: red;
+		}
+		.a2{
+			background: green;
+		}
+		.a3{
+			background: black;
+		}
+
+		#nav{
+			width:534px;
+			margin: 0 auto;
+			border: 1px solid white;
+			border-right:none;
+		}
+		#nav li a{
+			margin: 0;
+			padding: 5px 30px;
+			color: white;
+			font-size:14px;
+			border-right:1px solid white;
+		}
+		.div1{
+			background: #FFDDDD;
+		}
+		.div2{
+			background: #A3C5A8;
+		}
+		.div3{
+			background: #CCCCCC;
+		}
+		.nav1{
+			background:#FF0000;
+		}
+		.nav2{
+			background:#008000;
+		}
+		.nav3{
+			background:#000000;
+		}
+		.btn1{
+			width: 7px;
+			height: 7px;
+			margin: 8px;
+			border: 4px solid red;
+			background: white;
+		}
+		.btn2{
+			width: 7px;
+			height: 7px;
+			margin: 8px;
+			border: 4px solid green;
+			background: white;
+		}
+		.btn3{
+			width: 7px;
+			height: 7px;
+			margin: 8px;
+			border: 4px solid black;
+			background: white;
+		}
+	</style>
+</head>
+<body class="div1">
+	<div>
+	<ul id="btn">
+		<li><a href="javascript:;" id="a1" class="btn a1 btn1"></a></li>
+		<li><a href="javascript:;" id="a2" class="btn a2"></a></li>
+		<li><a href="javascript:;" id="a3" class="btn a3"></a></li>
+	</ul>
+	<ul id="nav">
+		<li><a href="#" class="nav1">新闻</a></li>
+		<li><a href="#" class="nav1">娱乐</a></li>
+		<li><a href="#" class="nav1">体育</a></li>
+		<li><a href="#" class="nav1">电影</a></li>
+		<li><a href="#" class="nav1">音乐</a></li>
+		<li><a href="#" class="nav1">旅游</a></li>
+	</ul>
+	</div>
+	<script>
+	window.onload=function(){
+		var a1 = document.getElementById('a1');
+		var a2 = document.getElementById('a2');
+		var a3 = document.getElementById('a3');
+
+		var body = document.body;
+
+		var nav = document.getElementById('nav');
+		var a = nav.getElementsByTagName('a');
+
+		a1.onclick= function(){
+			body.class=body.className='div1';
+			a1.class=a1.className='btn a1 btn1';
+			a2.class=a2.className='btn a2';
+			a3.class=a3.className='btn a3';
+			for(var i=0;i<a.length;i++){
+				a[i].class=a[i].className='nav1';
+			}
+		};
+		a2.onclick= function(){
+			body.class=body.className='div2';
+			a2.class=a2.className='btn a2 btn2';
+			a1.class=a1.className='btn a1';
+			a3.class=a3.className='btn a3';
+			for(var i=0;i<a.length;i++){
+				a[i].class=a[i].className='nav2';
+			}
+		};
+		a3.onclick= function(){
+			body.class=body.className='div3';
+			a3.class=a3.className='btn a3 btn3';
+			a2.class=a2.className='btn a2';
+			a1.class=a1.className='btn a1';
+			for(var i=0;i<a.length;i++){
+				a[i].class=a[i].className='nav3';
+			}
+		};
+	};
+	</script>
+</body>
+</html>

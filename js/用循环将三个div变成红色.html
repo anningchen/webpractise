@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>用循环将三个DIV变成红色</title>
+	<style>
+		#main{
+			width: 336px;
+			margin: 0 auto;
+		}
+		.btn{
+			width:120px;
+			margin: 10px auto;
+			text-decoration: none;
+			color:black;
+			font-size: 14px;
+			background: #ccc;
+			padding: 5px 20px;
+			border-radius:2px;
+			display: block;
+		}
+		#ddd{
+			width:;
+			margin:0 auto;
+		}
+		#ddd div{
+			width: 100px;
+			height: 100px;
+			margin: 6px;
+			background:black;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<a href="javascript:;" class="btn">点击将DIV变成红色</a>
+		<div id="ddd">
+		<div></div>
+		<div></div>
+		<div></div>
+		</div>
+	</div>
+
+	<script>
+	window.onload=function(){
+		var btn=document.getElementsByTagName('a')[0];
+		var ddd=document.getElementById('ddd');
+		btn.onclick=function(){
+			for (var i =0; i <ddd.childNodes.length; i++) {
+				if(ddd.childNodes[i].nodeType==1){
+					console.log(ddd.childNodes[i]);
+					ddd.childNodes[i].style.backgroundColor='red';
+				}
+			}
+		};
+	};
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js函数接收参数并弹出</title>
+	<style>
+		div{
+			width:500px;
+			margin:0 auto;
+			text-align:center;
+		}
+		input{
+			display:block;
+			margin: 5px 0;
+		}
+		#input1{
+			width: 200px;
+			margin:5px auto;
+			height: 20px;
+			
+		}
+		#input2{
+			width: 200px;
+			margin:5px auto;
+			height: 20px;
+			
+		}
+		#input3{
+			width: 45px;
+			margin:5px auto;
+			height: 24px;
+			
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<input type="text" id="input1" value="北京市"></input>
+		<input type="text" id="input2" value="朝阳区"></input>
+		<input type="button" id="input3" value="传参"></input>
+	</div>
+
+	<script>
+	window.onload=function(){
+		var input1=document.getElementById('input1');
+		var input2=document.getElementById('input2');
+		var input3=document.getElementById('input3');
+
+		input3.onclick=function(){
+			alert(input1.value);
+			alert(input2.value);
+		};
+	};
+	</script>
+</body>
+</html>

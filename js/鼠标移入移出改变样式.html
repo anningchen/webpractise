@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>鼠标移入移出改变样式</title>
+	<style>
+		#change{
+			
+			margin:0 auto;
+			line-height:1.7em;
+			cursor:crosshair;
+			font-size:10px;
+		}
+		.prech{
+			width:160px;
+			height:160px;
+			background:black;
+			color:white;
+			padding:20px;
+		}
+		.aftch{
+			width:160px;
+			height:160px;
+			background: white;
+			border: 10px solid red;
+			color:red;
+			padding:10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="change" class="prech">鼠标移入改变样式，鼠标移出恢复</div>
+	<script>
+	window.onload=function(){
+		var change=document.getElementById('change');
+		change.onmouseover=function(){
+			change.class=change.className='aftch';
+		};
+		change.onmouseout=function(){
+			change.class=change.className='prech';
+		};
+	};
+	</script>
+</body>
+</html>
