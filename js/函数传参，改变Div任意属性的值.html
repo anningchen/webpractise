@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>函数传参，改变Div任意参数的值</title>
+	<style>
+		#main{
+			width: 500px;
+			margin: 0 auto;
+		}
+		input{
+			margin: 5px;
+			height: 20px;
+		}
+		#submit{
+			margin-left: 77px;
+		}
+		button{
+			margin:10px 0;
+		}
+		.show{
+			color: white;
+			background: black;
+			width: 180px;
+			height: 180px;
+			font-size: 10px;
+			margin-left: 77px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<label>属性名：</label>
+		<input type="text" id="argname" value="background"><br/>
+		<label>属性值：</label>
+		<input type="text" id="argvalue" value="blue">
+		<br/>
+		<button id="submit">确定</button>
+		<button id="reset">重置</button>
+		<div id="show" class="show">在上方输入框输入"属性名"及"属性值"。点击确定按钮查看效果</div>
+	</div>
+
+<script>
+	window.onload=function(){
+		var argname=document.getElementById('argname');
+		var argvalue=document.getElementById('argvalue');
+		var submit=document.getElementById('submit');
+		var reset=document.getElementById('reset');
+		var show=document.getElementById('show');
+
+		submit.onclick=function(){
+			var name=argname.value;
+			var value=argvalue.value;
+			show.style[name]=value;
+		};
+		reset.onclick=function(){
+			show.removeAttribute('style');//由于改变的属性都是内嵌属性，所以直接去掉style属性就行了
+		}
+	};
+
+</script>
+</body>
+</html>

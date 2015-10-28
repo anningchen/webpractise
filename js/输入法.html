@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>输入法</title>
+	<style>
+		ul{
+			list-style:none;
+			border: 1px solid blue;
+			padding:0;
+			margin:0;
+			width:60px;
+			display: none;
+		}
+		li{
+			padding:0;
+			margin:0;
+		}
+		a{
+			text-decoration:none;
+			color:black;
+			font-size:12px;
+			display:block;
+			margin:0;
+			padding:5px 10px;
+		}
+		a:hover{
+			background: blue;
+		}
+		.main{
+			width:100px;
+			margin:0 auto;
+		}
+		#shurufa{
+			margin-bottom:5px;
+			cursor: pointer;
+		}
+		li:last-child a{
+			border-top: 1px solid blue;
+		}
+	</style>
+</head>
+<body>
+<div class="main">
+	<button id="shurufa">输入法</button>
+	<div id="uldiv">
+		<ul>
+			<li><a href="javascript:;">手写</a></li>
+			<li><a href="javascript:;">拼写</a></li>
+			<li><a id="guanbi" href="javascript:;">关闭</a></li>
+		</ul>
+	</div>
+</div>
+<script>
+	window.onload=function(){
+		var btn=document.getElementById('shurufa');
+		var ul=document.getElementsByTagName('ul')[0];
+		var guanbi=document.getElementById('guanbi');
+		
+		btn.onclick=function(){
+			console.log(ul.style.display);
+			if(!ul.style.display||ul.style.display=='none'){
+				ul.style.display='block';
+			}
+			else{
+				ul.style.display='none';
+			}
+		};
+
+		guanbi.onclick=function(){
+			if(ul.style.display=='block'){
+				ul.style.display='none';
+			}
+		}
+
+	};
+
+</script>
+</body>
+</html>
